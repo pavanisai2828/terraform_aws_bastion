@@ -1,0 +1,31 @@
+data "aws_ami" "join_devops" {
+    most_recent = true
+    owners = ["973714476881"]
+
+    filter {
+        name= "name"
+        values = ["Redhat-9-DevOps-Practice"]
+        }
+    filter {
+        name   = "root-device-type"
+        values = ["ebs"]
+        }
+
+    filter {
+        name   = "virtualization-type"
+        values = ["hvm"]
+    }
+
+    filter {
+        name   = "architecture"
+        values = ["x86_64"]
+    }
+}
+
+data "aws_ssm_parameter" "bastion_sg_id" {
+    name= "/${var.Project}/${var.Environment}/bastion_sg_id"
+}
+
+data "aws_ssm_parameter" "public_subnet_ids" {
+    name = "/${var.Project}/${var.Environment}/public_subnets"
+}
