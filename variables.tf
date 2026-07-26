@@ -15,3 +15,7 @@ variable "Project" {
 variable "Environment" {
   
 }
+
+variable "bastion_tags" {
+    default = {}
+}

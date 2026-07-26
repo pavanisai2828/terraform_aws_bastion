@@ -25,7 +25,8 @@ resource "aws_instance" "bastion" {
         {
             Name= "${local.common_name}-bastion"
         },
-        local.common_tags
+        local.common_tags,
+        var.bastion_tags
     )
 
   
